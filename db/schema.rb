@@ -13,33 +13,52 @@
 ActiveRecord::Schema.define(version: 20210623203650) do
 
   create_table "cities", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "listings", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "address"
+    t.string   "listing_type"
+    t.string   "title"
+    t.text     "description"
+    t.decimal  "price",           precision: 8, scale: 2
+    t.integer  "neighborhood_id"
+    t.integer  "host_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "neighborhoods", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.integer  "city_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.date     "checkin"
+    t.date     "checkout"
+    t.integer  "listing_id"
+    t.integer  "guest_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "description"
+    t.integer  "rating"
+    t.integer  "guest_id"
+    t.integer  "reservation_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
